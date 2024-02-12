@@ -45,8 +45,8 @@
               <div  class="form-group mt-3 mb-3" v-for="x in form.quests">
                 <label>{{ x.name }}</label>
                 <div class="reaction-options">
-                  <label  v-for="reactionOption in x.answers" :key="x.id+'-'+reactionOption.id" :class="{ 'selected': selectedReactions.includes(x.id+'-'+reactionOption.id) }">
-                    <input type="checkbox" :value="x.id+'-'+reactionOption.id" v-model="selectedReactions" class="hidden-checkbox">
+                  <label  v-for="reactionOption in x.answers" :key="x.id+'-'+reactionOption.id" :class="{ 'selected': selectedReactions.includes(x.id+'-'+reactionOption.id+'-'+reactionOption.name) }">
+                    <input type="checkbox" :value="x.id+'-'+reactionOption.id+'-'+reactionOption.name" v-model="selectedReactions" class="hidden-checkbox">
                     {{ reactionOption.name }}
                   </label>
                 </div>
@@ -148,6 +148,7 @@
         this.validationErrors = {};
   
         const data = {
+          form : this.$route.params.id,
           dosen : this.dosen.id,
           Rating: this.selectedRating,
           Komentar: this.comment,
