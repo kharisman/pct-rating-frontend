@@ -7,7 +7,7 @@
   
       <div v-else class="text-center" >
         <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
+            <!-- <ol class="breadcrumb">
                 <li class="breadcrumb-item"><router-link to="/">Home</router-link></li>
                 <li class="breadcrumb-item" aria-current="page">
                     <router-link :to="{ name: 'form-detail', params: { id: form.id } }" >
@@ -16,18 +16,20 @@
                 </li>
                 
                 <li class="breadcrumb-item active" aria-current="page">{{ dosen.name }}</li>
-            </ol>
+            </ol> -->
         </nav>
         <div class="container mt-4" v-if="form" >
           <div class="product-container">
             <img :src="dosen.picture" alt="Product Image" class="product-image">
-            {{ dosen.name }}
-            <div class="rating mt-2">
+            <h5>{{ dosen.name }}</h5>
+            <div v-if="submitted" class="mt-2">
+              
+            </div>
+            <div v-else class="rating mt-2">
               <span v-for="star in 5" :key="star" @click="selectRating(star)" :class="{ 'filled': star <= selectedRating }">&#9733;</span>
             </div>
           </div>
-  
-          
+
   
           <div v-if="submitted" class="mt-3">
             <h5>Terima kasih!</h5>
@@ -196,7 +198,7 @@
   }
   
   .rating {
-    font-size: 24px;
+    font-size: 34px;
     cursor: pointer;
   }
   
@@ -209,7 +211,7 @@
   }
   
   .product-image {
-    width: 100px;
+    width: 200px;
     margin-bottom: 10px;
   }
   
